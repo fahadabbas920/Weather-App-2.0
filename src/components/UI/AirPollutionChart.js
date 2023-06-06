@@ -131,7 +131,7 @@ const AirPollutionChart = () => {
             strokeWidth={2}
             fill="#82ca9d"
           /> */}
-          <XAxis dataKey="XAxis" />
+          <XAxis dataKey="XAxis" wrapperStyle={{fontSize: 10}}/>
           <YAxis />
          {airDataForecast !== [] &&  <Tooltip content={renderTooltipContent} />}
           <Legend />

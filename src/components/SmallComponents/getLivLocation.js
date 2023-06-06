@@ -8,7 +8,7 @@ const GetLiveLocation = () => {
     setLiveCoords(coords);
     setCoords(coords);
     setError(error);
-  }, []);
+  }, [coords,setCoords,error,setError,setLiveCoords]);
 
   return <></>;
 };

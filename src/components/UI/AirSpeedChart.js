@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { AllWeatherData } from "../../App";
 
 const AirSpeedChart = () => {
-  const { forecastData, metric,weatherData } = useContext(AllWeatherData);
+  const { forecastData, metric, weatherData } = useContext(AllWeatherData);
 
   let toggleSystem;
   if (metric === "km/h") {
@@ -21,12 +21,12 @@ const AirSpeedChart = () => {
   }
 
   const windSpeed = forecastData.filter((w, i) => {
-    return i<6
+    return i < 6;
     // return w.dayName === weatherData.dayName;
   });
-  windSpeed.forEach(data=>{
-    data.XAxis = data.hour.replace(" ",'') + ' ' + data.dayName.slice(0,3)
-   })
+  windSpeed.forEach((data) => {
+    data.XAxis = data.hour.replace(" ", "") + " " + data.dayName.slice(0, 3);
+  });
 
   const renderTooltipContent = (o) => {
     const { payload } = o; //   ,label
@@ -64,12 +64,20 @@ const AirSpeedChart = () => {
             bottom: 0,
           }}
         >
+          <defs>
+            <linearGradient id="colorWind" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#7eaed3" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#7eaed3" stopOpacity={0} />
+            </linearGradient>
+          </defs>
           <Area
             type="monotone"
             dataKey={toggleSystem}
             stroke="#c3cde6"
             strokeWidth={2}
-            fill="#7eaed3"
+            // fill="#7eaed3"
+            fillOpacity={1}
+            fill="url(#colorWind)"
           />
           <XAxis dataKey={"XAxis"} />
           <YAxis />

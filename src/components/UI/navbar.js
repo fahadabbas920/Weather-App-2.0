@@ -1,21 +1,20 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AllWeatherData } from "../../App";
 import { getLocation } from "../SmallComponents/funcLibrary";
+import GetReverseGeoCoding from "../SmallComponents/getReversegeocoding";
 // import { useState } from "react";
 // import { useLocation } from "react-router-dom";
 // import useLocation from "../Hooks/useLocation";
 const Navbar = () => {
   const inputNameRef = useRef();
   const {
-    setCoords,
     setError,
     setLocationName,
     locationName,
-    // liveCoords,
     setLiveCoords,
     setStar,
-    state,
-    setstate,
+    setLive,
+    Live
   } = useContext(AllWeatherData);
 
   function HandleSearch() {
@@ -35,11 +34,16 @@ const Navbar = () => {
   }
 
   function HandleLivLoc() {
-    setstate(false)
+    // setstate(false);
     getLocation((coords, error, status) => {
-      setLiveCoords(coords)
+      console.log(status)
+      console.log(error)
+      if (coords.lat !== null) {
+        setLiveCoords(coords);
+        setLive(true);
+        setError(error);
+      }
       // setCoords(coords);
-      setError(error);
     });
   }
 
@@ -77,6 +81,7 @@ const Navbar = () => {
           Live
         </button>
       </div>
+      {Live && <GetReverseGeoCoding />}
     </nav>
   );
 };

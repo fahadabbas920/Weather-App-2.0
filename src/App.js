@@ -10,30 +10,35 @@ import Header from "./components/UI/Header";
 import Loading from "./components/UI/loading";
 import ChartControlButtons from "./components/UI/chartControlButtons";
 import ForeCastCards from "./components/UI/forecastCards";
-import GetReverseGeoCoding from "./components/SmallComponents/getReversegeocoding";
+import ErrorDiv from "./components/UI/errorDiv";
+// import GetReverseGeoCoding from "./components/SmallComponents/getReversegeocoding";
 // import TimeZoneData from "./components/SmallComponents/getTimeZone";
 export const AllWeatherData = createContext();
 
 function App() {
+  const [liveCoords, setLiveCoords] = useState({ lat: null, lon: null });
   const [state, setstate] = useState(false);
   const [star, setStar] = useState(false);
   const name = localStorage.getItem("name")
-    ? JSON.parse(localStorage.getItem("name"))
-    : "New York";
+  ? JSON.parse(localStorage.getItem("name"))
+  : "New York";
   const Coords = localStorage.getItem("Coords")
     ? JSON.parse(localStorage.getItem("Coords"))
     : null;
 
   useEffect(() => {
-    if (Coords !== null) {
-      setstate(true);
-      // setStar(true);
-    } else {
-      setstate(true);
-    }
-  }, [Coords]);
+    setstate(true)
+  //   if (Coords !== null) {
+  //     setstate(true);
+  //     // setStar(true);
+  //   } 
+  // else if(liveCoords.lat !==null){
+  //     setstate(true);
+  //   }else{
+  //     true
+  //   }
+  }, [Coords,liveCoords.lat]);
 
-  const [liveCoords, setLiveCoords] = useState({ lat: null, lon: null });
   const [coords, setCoords] = useState({ lat: null, lon: null });
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState({
@@ -83,6 +88,8 @@ function App() {
   const [metricToggleVal, setMerticToggleVal] = useState();
   const [metric, setMetric] = useState("km/h");
   const [AQI, setAQI] = useState("Unknown");
+  const [Live, setLive] = useState(false);
+
   // const [tZOffset, setTZOffset] = useState();
   // // console.log(tZOffset);
   // // console.log(forecastData);
@@ -117,6 +124,7 @@ function App() {
           setAQI,
           state,
           setstate,
+          Live, setLive
           // tZOffset,
           // setTZOffset,
         }}
@@ -127,8 +135,10 @@ function App() {
         {coords.lat === null ? null : <GetAirPollution />}
         {coords.lat === null ? null : <GetForecast />}
         {coords.lat === null ? null : <GetAirForecastPollution />}
-        {liveCoords.lat === null ? null : <GetReverseGeoCoding />}
+        {/* {liveCoords.lat === null ? null : <GetReverseGeoCoding />} */}
         {/* {coords.lat === null ? null : <TimeZoneData />} */}
+        {error !== null ? <ErrorDiv/>:null}
+        {/* <ErrorDiv/> */}
         {coords.lat === null ? (
           <Loading />
         ) : (

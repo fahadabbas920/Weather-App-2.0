@@ -18,11 +18,11 @@ const ChartControlButtons = () => {
         </TabList>
 
         <TabPanel>
-          <h4>Remaining Temperature Forecast Hours</h4>
+          <h4>Temperature</h4>
           <TemperatureChart />
         </TabPanel>
         <TabPanel>
-          <h4>Remaining Wind Forecast Hours</h4>
+          <h4>Wind</h4>
           <AirSpeedChart />
         </TabPanel>
         <TabPanel>
