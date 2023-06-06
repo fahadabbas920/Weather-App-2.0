@@ -16,9 +16,6 @@ const Header = () => {
   let Hour;
   let letr;
   useEffect(() => {
-    // if(localStorage.getItem("name") !== locationName){
-    //   setStar(false)
-    // }
     if (weatherData.icon === "NaN") {
       // console.log("Not");
     } else {
@@ -40,46 +37,38 @@ const Header = () => {
     Hour = weatherData.hour.match(/\d+/g);
     letr = weatherData.hour.match(/[a-zA-Z]+/g);
   }
-  // const [metricToggleVal, setMerticToggleVal] = useState();
-  // const [metric, setMetric] = useState("m/s");
-
   function changeSize(value) {
     if (value === 1) {
       document.getElementById("one").style.fontWeight = "500";
       document.getElementById("two").style.color = "#9a9a9a";
       document.getElementById("one").style.color = "#ffffff";
       document.getElementById("two").style.fontWeight = "100";
-      setMetric("m/s");
+      setMetric("km/h");
     } else if (value === 2) {
       document.getElementById("two").style.fontWeight = "500";
       document.getElementById("one").style.color = "#9a9a9a";
       document.getElementById("two").style.color = "#ffffff";
       document.getElementById("one").style.fontWeight = "100";
-      setMetric("Mph");
+      setMetric("mph");
     }
   }
-  // const [hour, min] = timeConverter(weatherData.dt);
 
   function handleSave() {
     const Coords = localStorage.getItem("Coords")
       ? JSON.parse(localStorage.getItem("Coords"))
       : null;
-    // console.log(Coords);
     const name = localStorage.getItem("name")
       ? JSON.parse(localStorage.getItem("name"))
       : null;
-    // console.log(name)
     if (name === null) {
       localStorage.setItem("Coords", JSON.stringify(coords));
       localStorage.setItem("name", JSON.stringify(locationName));
       setStar(true);
     } else if (Coords.lat !== coords.lat && Coords.lon !== coords.lon) {
-      // console.log(2);
       localStorage.setItem("Coords", JSON.stringify(coords));
       localStorage.setItem("name", JSON.stringify(locationName));
       setStar(true);
     } else {
-      // console.log(3);
       localStorage.removeItem("Coords");
       localStorage.removeItem("name");
       setStar(false);
@@ -98,8 +87,7 @@ const Header = () => {
           <img src={state} alt={"icon"} className="App-Header-ImgIcon"></img>
         </div>
         <div className="App-Header-Temp">
-          {metric === "m/s" ? weatherData.tempC : weatherData.tempF}
-          {/* {changeTemp(weatherData.temp, metricToggleVal)}° */}
+          {metric === "km/h" ? weatherData.tempC : weatherData.tempF}°
         </div>
         <div className="App-Header-CF">
           {" "}
@@ -132,11 +120,7 @@ const Header = () => {
           {/* <div>Precipitation: </div> */}
           <div>Humidity: {weatherData.humidity}%</div>
           <div>
-            {/* Wind: {changeSpeed(metricToggleVal, weatherData.speed)} {metric} */}
-            Wind:{" "}
-            {metric === "m/s"
-              ? weatherData.speed
-              : weatherData.speedF.toFixed(2)}{" "}
+            Wind: {metric === "km/h" ? weatherData.speedC : weatherData.speedF}
             {metric}
           </div>
           <div>Pressure: {weatherData.pressure} mbar</div>
@@ -146,8 +130,9 @@ const Header = () => {
       <div className="App-Header-Right">
         <div className="App-Header-Title">Weather</div>
         <div className="App-Header-DateTime">
-          {/* {ChangeTimeFormat(hour)} : {min} UTC */}
-          {Hour < 10? `${"0"+Hour}`: Hour} : {weatherData.min < 10?`${"0"+weatherData.min}`: weatherData.min } {letr}
+          {Hour < 10 ? `${"0" + Hour}` : Hour} :{" "}
+          {weatherData.min < 10 ? `${"0" + weatherData.min}` : weatherData.min}{" "}
+          {letr}
         </div>
         <div className="App-Header-Des2">{weatherData.description}</div>
         <div
@@ -159,12 +144,12 @@ const Header = () => {
           {star ? (
             <span>
               <i className="fa-solid fa-star"></i>
-              <small>unsave</small>
+              <small>Unsave</small>
             </span>
           ) : (
             <span>
               <i className="fa-regular fa-star"></i>
-              <small>save</small>
+              <small>Save</small>
             </span>
           )}
         </div>

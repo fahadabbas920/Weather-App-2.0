@@ -1,16 +1,16 @@
-import { changeTemp,timeConverter,changeSpeed } from "../SmallComponents/funcLibrary";
-import { useState,useEffect,useContext } from "react";
+import {
+  changeTemp,
+  timeConverter,
+  changeSpeed,
+} from "../SmallComponents/funcLibrary";
+import { useState, useEffect, useContext } from "react";
 import { AllWeatherData } from "../../App";
 // import { changT } from "./funcLibrary";
 
 const WeatherDisplay = () => {
-  //   console.log(weatherData, locationName);
-
   const [state, setstate] = useState("");
 
-  const {weatherData} = useContext(AllWeatherData)
-
-
+  const { weatherData } = useContext(AllWeatherData);
 
   useEffect(() => {
     if (weatherData.icon === "NaN") {
@@ -39,22 +39,21 @@ const WeatherDisplay = () => {
   // } else if(rad ===3){
   //   sett('F°')
   // }
-  const [metricToggleVal,setMerticToggleVal] = useState()
-  const [metric, setMetric] = useState('m/s')
+  const [metricToggleVal, setMerticToggleVal] = useState();
+  const [metric, setMetric] = useState("m/s");
 
   function changeSize(value) {
     if (value === 1) {
       document.getElementById("one").style.fontWeight = "500";
       document.getElementById("two").style.fontWeight = "100";
-      setMetric('m/s')
+      setMetric("m/s");
     } else if (value === 2) {
       document.getElementById("two").style.fontWeight = "500";
       document.getElementById("one").style.fontWeight = "100";
-      setMetric('Mph')
-
+      setMetric("Mph");
     }
   }
-const [time,month,year,hour,min,sec] = timeConverter(weatherData.dt)
+  const [time, month, year, hour, min, sec] = timeConverter(weatherData.dt);
   return (
     <div>
       {/* <form onSubmit={(e)=>{console.log("submitted")}}>
@@ -170,19 +169,23 @@ const [time,month,year,hour,min,sec] = timeConverter(weatherData.dt)
           Farenheit
         
         </button> */}
-        
 
         <header id="weth-weather">
-         <div id="img-container"> {weatherData && <img src={state} alt={"icon"}></img>}</div>
-          
-          {weatherData && <h1>{changeTemp(weatherData.temp, metricToggleVal)}°</h1>}
+          <div id="img-container">
+            {" "}
+            {weatherData && <img src={state} alt={"icon"}></img>}
+          </div>
+
+          {weatherData && (
+            <h1>{changeTemp(weatherData.temp, metricToggleVal)}°</h1>
+          )}
           <div id="changeTemp-btn">
             {
               <h2
                 id="one"
                 onClick={() => {
                   // setrad(1);
-                  setMerticToggleVal(1)
+                  setMerticToggleVal(1);
                   changeSize(1);
                 }}
               >
@@ -194,7 +197,7 @@ const [time,month,year,hour,min,sec] = timeConverter(weatherData.dt)
               id="two"
               onClick={() => {
                 // setrad(3);
-                setMerticToggleVal(2)
+                setMerticToggleVal(2);
                 changeSize(2);
               }}
             >
@@ -216,11 +219,19 @@ const [time,month,year,hour,min,sec] = timeConverter(weatherData.dt)
             <p>Country:</p>
           </div>
           <div className="main-des">
-            {weatherData && <p>{hour}:{min} UTC</p>}
+            {weatherData && (
+              <p>
+                {hour}:{min} UTC
+              </p>
+            )}
             {weatherData && <p>{weatherData.description}</p>}
             {weatherData && <p>{weatherData.pressure} mbar</p>}
             {weatherData && <p>{weatherData.humidity}%</p>}
-            {weatherData && <p>{changeSpeed(metricToggleVal, weatherData.speed)} {metric} </p>}
+            {weatherData && (
+              <p>
+                {changeSpeed(metricToggleVal, weatherData.speed)} {metric}{" "}
+              </p>
+            )}
             {weatherData && <p>{weatherData.country}</p>}
           </div>
         </main>

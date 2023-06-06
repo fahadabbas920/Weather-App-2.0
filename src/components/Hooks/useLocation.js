@@ -1,52 +1,53 @@
-import { useEffect,useState} from "react";
-// import { AllWeatherData } from "../../App";
-
+import { useEffect, useState } from "react";
 
 const useLocation = () => {
-  // console.log("useLocation Called")
-    // const {coords,setCoords,error,setError} = useContext(AllWeatherData)
-    const [coords,setCoords] = useState({lat: null, lon: null})
-    const [error,setError] = useState("")
-    const [status, setStatus] = useState(false)
+  const [coords, setCoords] = useState({ lat: null, lon: null });
+  const [error, setError] = useState("");
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
-    navigator.permissions &&
+    const handleSuccess = (position) => {
+      const { latitude: lat, longitude: lon } = position.coords;
+      setCoords({ lat: lat, lon: lon });
+      setStatus(true);
+    };
+
+    const handleError = (error) => {
+      setStatus(false);
+      setError(`Error occurred while retrieving location: ${error.message}`);
+    };
+
+    const fetchLocation = () => {
+      navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+    };
+
+    if (navigator.permissions) {
       navigator.permissions
         .query({ name: "geolocation" })
-        .then(function (PermissionStatus) {
-          if (PermissionStatus.state === "granted") {
-            navigator.geolocation.getCurrentPosition((e) => {
-              const { latitude: lat, longitude: lon } = e.coords;
-              setCoords({ lat: lat, lon: lon });
-              console.log("1")
-              setStatus(true)
-              
-            });
-          } else if (PermissionStatus.state === "prompt") {
-            setStatus(false)
+        .then((permissionStatus) => {
+          if (permissionStatus.state === "granted") {
+            fetchLocation();
+          } else if (permissionStatus.state === "prompt") {
+            setStatus(false);
             setError("Please Enable Live Location.");
-            navigator.geolocation.getCurrentPosition((e) => {
-                setCoords({lat:e.coords.latitude,lon: e.coords.longitude})
-                console.log("2")
-                setStatus(true)
-            });
-            // prompt - not yet grated or denied
-            console.log("prompt");
+            fetchLocation();
           } else {
-            //denied
-            console.log("3")
-            setStatus(false)
-           
-            console.log("denied");
+            setStatus(false);
             setError(
-              `Live Location permission denied. Please enable Live Location and click live location button.`
+              "Live Location permission denied. Please enable Live Location and click the Live Location button."
             );
           }
+        })
+        .catch((error) => {
+          setError(`Error occurred while checking permission: ${error.message}`);
         });
+    } else {
+      setError("Geolocation is not supported by this browser.");
+    }
   }, []);
-  // console.log("useLocation Ended")
 
-  return {coords,error,status};
+  return { coords, error, status };
 };
 
 export default useLocation;
+

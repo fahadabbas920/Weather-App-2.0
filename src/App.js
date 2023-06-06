@@ -9,6 +9,9 @@ import GetAirForecastPollution from "./components/SmallComponents/getAirPollutio
 import Header from "./components/UI/Header";
 import Loading from "./components/UI/loading";
 import ChartControlButtons from "./components/UI/chartControlButtons";
+import ForeCastCards from "./components/UI/forecastCards";
+import GetReverseGeoCoding from "./components/SmallComponents/getReversegeocoding";
+// import TimeZoneData from "./components/SmallComponents/getTimeZone";
 export const AllWeatherData = createContext();
 
 function App() {
@@ -16,8 +19,7 @@ function App() {
   const [star, setStar] = useState(false);
   const name = localStorage.getItem("name")
     ? JSON.parse(localStorage.getItem("name"))
-    : "Lahore";
-    console.log(name)
+    : "New York";
   const Coords = localStorage.getItem("Coords")
     ? JSON.parse(localStorage.getItem("Coords"))
     : null;
@@ -25,11 +27,11 @@ function App() {
   useEffect(() => {
     if (Coords !== null) {
       setstate(true);
-      setStar(true);
+      // setStar(true);
     } else {
       setstate(true);
     }
-  }, []);
+  }, [Coords]);
 
   const [liveCoords, setLiveCoords] = useState({ lat: null, lon: null });
   const [coords, setCoords] = useState({ lat: null, lon: null });
@@ -79,9 +81,12 @@ function App() {
   const [airDataForecast, setAirDataForecast] = useState([]);
   const [forecastData, setForecastData] = useState([]);
   const [metricToggleVal, setMerticToggleVal] = useState();
-  const [metric, setMetric] = useState("m/s");
-
-  console.log(forecastData)
+  const [metric, setMetric] = useState("km/h");
+  const [AQI, setAQI] = useState("Unknown");
+  // const [tZOffset, setTZOffset] = useState();
+  // // console.log(tZOffset);
+  // // console.log(forecastData);
+  console.log(liveCoords);
   return (
     <div className="App">
       <AllWeatherData.Provider
@@ -98,8 +103,8 @@ function App() {
           setCoords,
           error,
           setError,
-          setLiveCoords,
           liveCoords,
+          setLiveCoords,
           airDataForecast,
           setAirDataForecast,
           metricToggleVal,
@@ -108,6 +113,12 @@ function App() {
           setMetric,
           star,
           setStar,
+          AQI,
+          setAQI,
+          state,
+          setstate,
+          // tZOffset,
+          // setTZOffset,
         }}
       >
         {/* && locationName === "" */}
@@ -116,6 +127,8 @@ function App() {
         {coords.lat === null ? null : <GetAirPollution />}
         {coords.lat === null ? null : <GetForecast />}
         {coords.lat === null ? null : <GetAirForecastPollution />}
+        {liveCoords.lat === null ? null : <GetReverseGeoCoding />}
+        {/* {coords.lat === null ? null : <TimeZoneData />} */}
         {coords.lat === null ? (
           <Loading />
         ) : (
@@ -123,6 +136,7 @@ function App() {
             <Navbar />
             <Header />
             <ChartControlButtons />
+            <ForeCastCards />
           </>
         )}
       </AllWeatherData.Provider>

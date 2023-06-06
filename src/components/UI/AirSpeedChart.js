@@ -11,29 +11,38 @@ import { useContext } from "react";
 import { AllWeatherData } from "../../App";
 
 const AirSpeedChart = () => {
-  const { forecastData, metric } = useContext(AllWeatherData);
+  const { forecastData, metric,weatherData } = useContext(AllWeatherData);
 
   let toggleSystem;
-  if (metric === "m/s") {
-    toggleSystem = "speed";
+  if (metric === "km/h") {
+    toggleSystem = "speedC";
   } else {
     toggleSystem = "speedF";
   }
 
   const windSpeed = forecastData.filter((w, i) => {
-    return i < 6;
+    return i<6
+    // return w.dayName === weatherData.dayName;
   });
+  windSpeed.forEach(data=>{
+    data.XAxis = data.hour.replace(" ",'') + ' ' + data.dayName.slice(0,3)
+   })
+
   const renderTooltipContent = (o) => {
-    const { payload } = o;   //   ,label
+    const { payload } = o; //   ,label
     // const total = payload.reduce((result, entry) => result + entry.value, 0);
-  
+
     return (
       <div className="customized-tooltip-content">
         {/* <p className="total">{`${label} (Total: ${total})`}</p> */}
         <ul className="Pollution-Chart-Container-UL">
           {payload.map((entry, index) => (
             <li key={`item-${index}`} style={{ color: "#ffffff" }}>
-              {`${entry.name.substring(0, 5)}:`} &nbsp;<span> {entry.value.toFixed(2)} {metric}</span>
+              {`${entry.name.substring(0, 5)}:`} &nbsp;
+              <span>
+                {" "}
+                {entry.value} {metric}
+              </span>
             </li>
           ))}
         </ul>
@@ -58,12 +67,13 @@ const AirSpeedChart = () => {
           <Area
             type="monotone"
             dataKey={toggleSystem}
-            stroke="#82ca9d"
-            fill="#82ca9d"
+            stroke="#c3cde6"
+            strokeWidth={2}
+            fill="#7eaed3"
           />
-          <XAxis dataKey={"hour"} />
+          <XAxis dataKey={"XAxis"} />
           <YAxis />
-          <Tooltip content={renderTooltipContent}/>
+          <Tooltip content={renderTooltipContent} />
           <Legend />
         </AreaChart>
       </ResponsiveContainer>
