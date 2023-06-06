@@ -1,16 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
-*{
-  font-family: 'Ubuntu', sans-serif;
-  
+* {
+  font-family: "Ubuntu", sans-serif;
+  /* transition: all 1s ease-in; */
 }
 
-body{
+body {
   background-color: #3d3d3d;
   /* background-color: #202124; */
 }
+/* 
+body *{
+  transition: height 0.3s ease;
+} */
+/* 
+body *:not(:last-child):hover {
+  transform: translateY(-5px);
+} */
 
-.App-Loading-Container{
+
+/* body * {
+  transition: all 3s ease;
+} */
+/* body :not(:last-child) {
+  transition: all 0.3s ease;
+} */
+
+/* @keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+body {
+  opacity: 0;
+  animation: fade-in 0.5s ease-in-out forwards;
+} */
+.App-Loading-Container {
   background-color: #ffffff;
   height: 100vh;
   width: 100vw;
@@ -19,10 +48,16 @@ body{
   justify-content: center;
   align-items: center;
 }
-.App-Loading-Container-Text{
+.App-Loading-Container-Text {
   margin-top: 2rem;
   font-size: 2rem;
 }
+
+/* @keyframes AppAnimation {
+  0%{
+
+  }
+} */
 
 /* 
 .react-tabs {

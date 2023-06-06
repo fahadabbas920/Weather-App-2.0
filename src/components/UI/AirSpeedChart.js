@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { AllWeatherData } from "../../App";
 
 const AirSpeedChart = () => {
-  const { forecastData, metric, weatherData } = useContext(AllWeatherData);
+  const { forecastData, metric } = useContext(AllWeatherData);
 
   let toggleSystem;
   if (metric === "km/h") {

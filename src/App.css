@@ -5,6 +5,10 @@
   align-items: center;
   text-align: center;
 }
+
+/* .App :not(.App-Chart-ControlBtns-Container){
+  transition: all 0.3s ease;
+} */
 /* ///////////////////////////////////////////////////////  Navbar  ////////////////////////////////////////////////////////*/
 .App-Navbar-Container {
   /* background-color: rgb(77, 77, 77); */
@@ -49,12 +53,17 @@
 
 /* 920px */
 
+.App-Navbar-Container form{
+  display: inline-block;
+
+}
+
 @media screen and (max-width: 960px) {
   .App-Navbar-Container {
     height: 4rem;
     width: 100%;
   }
-   .App-Navbar-Left {
+  .App-Navbar-Left {
     display: none;
   }
   /*.App-Navbar-Input{
@@ -171,8 +180,6 @@
   margin-bottom: 0.5rem;
 }
 
-
-
 .App-Header-Right {
   margin-right: 1rem;
   /* min-width: 150px;
@@ -203,168 +210,172 @@
   filter: drop-shadow(2px 3px 8px #222);
   /* margin: 0.3rem; */
 }
-.App-Header-Save{
+.App-Header-Save {
   font-size: 1.5rem;
 }
 
+.App-Header-Save{
+  cursor: pointer;
+}
+
 @media screen and (max-width: 960px) {
-  
-.App-Header-Container {
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90vw;
-  height: 5rem;
-  padding: 0.4rem;
-  border-radius: 5px;
-  /* color: white; */
-}
-.App-Header-Left {
-  display: flex;
-  font-size: 0.7rem;
-}
+  .App-Header-Container {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    height: 5rem;
+    padding: 0.4rem;
+    border-radius: 5px;
+    /* color: white; */
+  }
+  .App-Header-Left {
+    display: flex;
+    font-size: 0.7rem;
+  }
 
-.App-Header-Img {
-  align-self: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 70px;
-  height: 70px;
-  /* background-color: black; */
-}
-.App-Header-Img .App-Header-ImgIcon {
-  /* -webkit-filter: drop-shadow(5px 5px 5px #222); */
-  /* filter: drop-shadow(2px 3px 8px #222); */
-  /* display: none; */
-  margin: 0.3rem;
-  height: 110%;
-  /* display: none; */
-}
+  .App-Header-Img {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    /* background-color: black; */
+  }
+  .App-Header-Img .App-Header-ImgIcon {
+    /* -webkit-filter: drop-shadow(5px 5px 5px #222); */
+    /* filter: drop-shadow(2px 3px 8px #222); */
+    /* display: none; */
+    margin: 0.3rem;
+    height: 110%;
+    /* display: none; */
+  }
 
-.App-Header-Img .App-Header-ImgBackBlur {
-  z-index: 0;
-  opacity: 50%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  /* scale: 5; */
-  transform: scale(5);
-}
+  .App-Header-Img .App-Header-ImgBackBlur {
+    z-index: 0;
+    opacity: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* scale: 5; */
+    transform: scale(5);
+  }
 
-.App-Header-Temp {
-  align-self: center;
-  /* -webkit-text-stroke-width: 1px;
+  .App-Header-Temp {
+    align-self: center;
+    /* -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(187, 187, 187); */
-  filter: drop-shadow(2px 3px 8px #222);
-  color: #fff;
-  /* text-shadow:
+    filter: drop-shadow(2px 3px 8px #222);
+    color: #fff;
+    /* text-shadow:
     0 0 7px #fff,
     0 0 10px #fff,
     0 0 21px #fff; */
-  /* 0 0 42px #0073ff,
+    /* 0 0 42px #0073ff,
     0 0 82px #0073ff,
     0 0 92px #0073ff,
     0 0 102px #0073ff,
     0 0 151px #0073ff; */
-  /* 0 0 151px #0fa; */
-  margin: 0.3rem;
-  font-size: 1.5rem;
-}
-.App-Header-CF {
-  /* filter: drop-shadow(2px 3px 8px #222); */
-  z-index: 1;
-  margin: 0.3rem;
-  font-size: 1.5rem;
-  align-self: center;
-}
+    /* 0 0 151px #0fa; */
+    margin: 0.3rem;
+    font-size: 1.5rem;
+  }
+  .App-Header-CF {
+    /* filter: drop-shadow(2px 3px 8px #222); */
+    z-index: 1;
+    margin: 0.3rem;
+    font-size: 1.5rem;
+    align-self: center;
+  }
 
-#one {
-  font-weight: 500;
-}
-#two {
-  font-weight: 100;
-  color: #9a9a9a;
-}
+  #one {
+    font-weight: 500;
+  }
+  #two {
+    font-weight: 100;
+    color: #9a9a9a;
+  }
 
-.App-Header-Name {
-  filter: drop-shadow(2px 3px 8px #222);
-  /* font-size: 0.8rem; */
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
+  .App-Header-Name {
+    filter: drop-shadow(2px 3px 8px #222);
+    /* font-size: 0.8rem; */
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
 
-.App-Header-Des {
-  font-size: 0.8rem;
-  filter: drop-shadow(2px 3px 8px #222);
-  z-index: 1;
-  /* align-self: center; */
-  margin-top: 0.5rem;
-  /* background-color: blanchedalmond; */
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  /* margin: 0.3rem; */
-  margin-left: 0.5rem;
-}
+  .App-Header-Des {
+    font-size: 0.8rem;
+    filter: drop-shadow(2px 3px 8px #222);
+    z-index: 1;
+    /* align-self: center; */
+    margin-top: 0.5rem;
+    /* background-color: blanchedalmond; */
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* margin: 0.3rem; */
+    margin-left: 0.5rem;
+  }
 
-.App-Header-Right {
-  /* min-width: 150px;
+  .App-Header-Right {
+    /* min-width: 150px;
   min-height: 100px; */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  /* background-color: aqua; */
-  /* align-items: flex-start; */
-}
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    /* background-color: aqua; */
+    /* align-items: flex-start; */
+  }
 
-.App-Header-Title {
-  filter: drop-shadow(2px 3px 8px #222);
-  /* font-size: 0.8rem; */
-  /* align-self: center; */
-  font-weight: 500;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  /* font-size: 1.5rem; */
-  /* margin: 0.3rem; */
-}
-.App-Header-DateTime {
-  /* font-size: 0.8rem; */
-  filter: drop-shadow(2px 3px 8px #222);
-  /* margin: 0.3rem; */
-}
-.App-Header-Des2 {
-  /* font-size: 0.8rem; */
-  filter: drop-shadow(2px 3px 8px #222);
-  /* margin: 0.3rem; */
-}
-.App-Header-Save{
-  padding: 0.2rem;
-  font-size: 0.8rem;
-}
+  .App-Header-Title {
+    filter: drop-shadow(2px 3px 8px #222);
+    /* font-size: 0.8rem; */
+    /* align-self: center; */
+    font-weight: 500;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    /* font-size: 1.5rem; */
+    /* margin: 0.3rem; */
+  }
+  .App-Header-DateTime {
+    /* font-size: 0.8rem; */
+    filter: drop-shadow(2px 3px 8px #222);
+    /* margin: 0.3rem; */
+  }
+  .App-Header-Des2 {
+    /* font-size: 0.8rem; */
+    filter: drop-shadow(2px 3px 8px #222);
+    /* margin: 0.3rem; */
+  }
+  .App-Header-Save {
+    padding: 0.2rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* ///////////////////////////////////////////////////////  Misc  ////////////////////////////////////////////////////////*/
 
-.Air-Chart-Container, .Pollution-Chart-Container {
+.Air-Chart-Container,
+.Pollution-Chart-Container {
   height: 250px;
   width: 720px;
 }
 
 @media screen and (max-width: 960px) {
-  .Air-Chart-Container, .Pollution-Chart-Container{
-    height: 20vh;
+  .Air-Chart-Container,
+  .Pollution-Chart-Container {
+    height: 10rem;
     width: 90vw;
   }
 }
-
 
 .Pollution-Chart-Container-UL {
   background-color: #27272785;
@@ -375,7 +386,7 @@
   padding: 5px;
 }
 
-.Pollution-Chart-Container-UL li{
+.Pollution-Chart-Container-UL li {
   list-style: none;
   text-decoration: underline;
 }
@@ -385,8 +396,7 @@
   }
 } */
 
-
-.App-Chart-ControlBtns-Container{
+.App-Chart-ControlBtns-Container {
   color: white;
   background-color: #202124;
   /* background-color: rgb(77, 77, 77); */
@@ -405,18 +415,15 @@
   /* width: 900px */
 }
 
-
 @media screen and (max-width: 960px) {
-  
   .App-Chart-ControlBtns-Container {
     width: 90vw;
-  }}
-
-
+  }
+}
 
 /* ///////////////////////////////////////////////////////  Forecast Cards  ////////////////////////////////////////////////////////*/
 
-.App-Card-Array-Container{
+.App-Card-Array-Container {
   width: 720px;
   margin-top: 2rem;
   display: flex;
@@ -424,20 +431,19 @@
 }
 
 @media screen and (max-width: 960px) {
-  
-  .App-Card-Array-Container{
+  .App-Card-Array-Container {
     justify-content: space-around;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     /* flex-wrap: wrap-reverse; */
     width: 90vw;
   }
-  .App-Card-Array-Container >*{
+  .App-Card-Array-Container > * {
     flex: 1 1 160px;
     margin-top: 1rem;
   }
 }
-  
-.App-Card-Container{
+
+.App-Card-Container {
   display: flex;
   max-width: 100px;
   height: 150px;
@@ -450,23 +456,43 @@
   padding: 0.5rem;
   color: white;
 }
-.App-Card-Day{
+.App-Card-Day {
   font-size: 1rem;
-    /* margin-top: 0.rem; */
+  /* margin-top: 0.rem; */
 }
-.App-Card-Img{
+.App-Card-Img {
   height: 70px;
 }
 
-.App-Card-Img Img{
+.App-Card-Img Img {
   height: 100%;
 }
 
-
-.App-Card-Des{
+.App-Card-Des {
   font-size: 0.7rem;
 }
-.App-Card-Temp{
+.App-Card-Temp {
   font-size: 1.5rem;
   /* margin-bottom: 0.5rem; */
+}
+/* @keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+.App-Error-Container {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 2rem;
+  transition: all 0.5s ease;
+  /* opacity: 0; */
+  /* animation: fade-in 0.5s ease-in-out forwards; */
+}
+.App-Error-Title {
+  color: rgb(255, 0, 0);
+  padding: 0.2rem;
+  margin: 0;
 }

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef} from "react";
 import { AllWeatherData } from "../../App";
 import { getLocation } from "../SmallComponents/funcLibrary";
 import GetReverseGeoCoding from "../SmallComponents/getReversegeocoding";
@@ -38,14 +38,35 @@ const Navbar = () => {
     getLocation((coords, error, status) => {
       console.log(status)
       console.log(error)
+      setError(error);
       if (coords.lat !== null) {
         setLiveCoords(coords);
         setLive(true);
-        setError(error);
       }
       // setCoords(coords);
     });
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevents the default form submission behavior
+    if (!inputNameRef.current.value) {
+      // setError("Please Enter Name")
+      console.log("Please Enter Name");
+    } else if (inputNameRef.current.value === locationName) {
+      console.log("name already there");
+    } else {
+      // console.log(inputNameRef.current.value);
+      setLocationName(inputNameRef.current.value);
+      const name = localStorage.getItem("name");
+      if (name === inputNameRef.current.value) {
+        setStar(true);
+      }
+    }
+    // Custom logic or actions you want to perform when the form is submitted
+    
+    // Example: Resetting the form fields
+    // event.target.reset();
+  };
 
   return (
     <nav className="App-Navbar-Container">
@@ -55,6 +76,7 @@ const Navbar = () => {
         </label>
       </div>
       <div className="App-Navbar-Right">
+        <form onSubmit={handleSubmit}>
         <input
           className=" App-Navbar-Input"
           id="search-Bar"
@@ -63,6 +85,7 @@ const Navbar = () => {
           placeholder="Search Location"
           ref={inputNameRef}
         />
+        </form>
         <button
           className="App-Navbar-Btn App-Navbar-SearchBtn "
           type="button"

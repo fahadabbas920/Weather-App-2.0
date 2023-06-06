@@ -78,16 +78,16 @@ export function timeConverter(UNIX_timestamp) {
   return [dayName, date, month, year, hour, min, sec];
 }
 
-function adjustTimestampByTimezoneOffset(timestamp, offset) {
-  // Convert offset to milliseconds
-  const offsetMilliseconds = offset * 60 * 60 * 1000;
+// function adjustTimestampByTimezoneOffset(timestamp, offset) {
+//   // Convert offset to milliseconds
+//   const offsetMilliseconds = offset * 60 * 60 * 1000;
 
-  // Adjust the timestamp by adding or subtracting the offset
-  const adjustedTimestamp = timestamp + offsetMilliseconds;
+//   // Adjust the timestamp by adding or subtracting the offset
+//   const adjustedTimestamp = timestamp + offsetMilliseconds;
 
-  // Return the adjusted timestamp
-  return adjustedTimestamp;
-}
+//   // Return the adjusted timestamp
+//   return adjustedTimestamp;
+// }
 
 /////////////////////////   Convert Time into 24 Hour Format   ////////////////////////////////
 
@@ -108,28 +108,28 @@ function convertTo12HourFormat(hour) {
   }
 }
 
-export function convertTimestampToLocation(timestamp, timezoneOffset) {
-  // Create a new Date object using the provided timestamp
-  const date = new Date(timestamp);
+// export function convertTimestampToLocation(timestamp, timezoneOffset) {
+//   // Create a new Date object using the provided timestamp
+//   const date = new Date(timestamp);
 
-  // Get the UTC timestamp by adding the timezone offset in minutes
-  const utcTimestamp = timestamp + timezoneOffset * 60 * 1000;
+//   // Get the UTC timestamp by adding the timezone offset in minutes
+//   const utcTimestamp = timestamp + timezoneOffset * 60 * 1000;
 
-  // Create a new Date object using the adjusted UTC timestamp
-  const adjustedDate = new Date(utcTimestamp);
+//   // Create a new Date object using the adjusted UTC timestamp
+//   const adjustedDate = new Date(utcTimestamp);
 
-  // Get the local date and time of the specific location
-  const locationDate = adjustedDate.toLocaleDateString();
-  const locationTime = adjustedDate.toLocaleTimeString();
+//   // Get the local date and time of the specific location
+//   const locationDate = adjustedDate.toLocaleDateString();
+//   const locationTime = adjustedDate.toLocaleTimeString();
 
-  const { dayName, hour, minute, day, month, year, sec } =
-    convertDateTimeToComponents(locationDate);
+//   const { dayName, hour, minute, day, month, year, sec } =
+//     convertDateTimeToComponents(locationDate);
 
-  return {
-    locationDate,
-    locationTime,
-  };
-}
+//   return {
+//     locationDate,
+//     locationTime,
+//   };
+// }
 
 // export function changeTemp(value, option) {
 //   switch (option) {

@@ -7,12 +7,12 @@ import {
   AreaChart,
   ResponsiveContainer,
 } from "recharts";
-import { useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import { AllWeatherData } from "../../App";
 // import { timeConverter } from "../SmallComponents/funcLibrary";
 
 const TemperatureChart = () => {
-  const { forecastData, metric, weatherData } = useContext(AllWeatherData);
+  const { forecastData, metric } = useContext(AllWeatherData);
   // console.log(weatherData)
   console.log(forecastData);
   // let filterer = [];
@@ -63,17 +63,17 @@ const TemperatureChart = () => {
       </div>
     );
   };
-  const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
-    return (
-      <text
-        x={x + width / 2}
-        y={y}
-        fill="#666"
-        textAnchor="middle"
-        dy={-6}
-      >{`value: ${value}`}</text>
-    );
-  };
+  // const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
+  //   return (
+  //     <text
+  //       x={x + width / 2}
+  //       y={y}
+  //       fill="#666"
+  //       textAnchor="middle"
+  //       dy={-6}
+  //     >{`value: ${value}`}</text>
+  //   );
+  // };
   return (
     <div className="Air-Chart-Container">
       <ResponsiveContainer width="100%" height="100%">

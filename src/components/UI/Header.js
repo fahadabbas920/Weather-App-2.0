@@ -12,6 +12,8 @@ const Header = () => {
     setStar,
     locationName,
     coords,
+    error,
+    setError,
   } = useContext(AllWeatherData);
   let Hour;
   let letr;
@@ -54,24 +56,29 @@ const Header = () => {
   }
 
   function handleSave() {
-    const Coords = localStorage.getItem("Coords")
-      ? JSON.parse(localStorage.getItem("Coords"))
-      : null;
-    const name = localStorage.getItem("name")
-      ? JSON.parse(localStorage.getItem("name"))
-      : null;
-    if (name === null) {
-      localStorage.setItem("Coords", JSON.stringify(coords));
-      localStorage.setItem("name", JSON.stringify(locationName));
-      setStar(true);
-    } else if (Coords.lat !== coords.lat && Coords.lon !== coords.lon) {
-      localStorage.setItem("Coords", JSON.stringify(coords));
-      localStorage.setItem("name", JSON.stringify(locationName));
-      setStar(true);
+    if (error !== null) {
+      setError(`Unable to Save`);
     } else {
-      localStorage.removeItem("Coords");
-      localStorage.removeItem("name");
-      setStar(false);
+      console.log(error);
+      const Coords = localStorage.getItem("Coords")
+        ? JSON.parse(localStorage.getItem("Coords"))
+        : null;
+      const name = localStorage.getItem("name")
+        ? JSON.parse(localStorage.getItem("name"))
+        : null;
+      if (name === null) {
+        localStorage.setItem("Coords", JSON.stringify(coords));
+        localStorage.setItem("name", JSON.stringify(locationName));
+        setStar(true);
+      } else if (Coords.lat !== coords.lat && Coords.lon !== coords.lon) {
+        localStorage.setItem("Coords", JSON.stringify(coords));
+        localStorage.setItem("name", JSON.stringify(locationName));
+        setStar(true);
+      } else {
+        localStorage.removeItem("Coords");
+        localStorage.removeItem("name");
+        setStar(false);
+      }
     }
   }
 

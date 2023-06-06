@@ -13,7 +13,7 @@ import { useContext } from "react";
 import { AllWeatherData } from "../../App";
 
 const AirPollutionChart = () => {
-  const { airDataForecast, setAQI, weatherData} = useContext(AllWeatherData);
+  const { airDataForecast, setAQI} = useContext(AllWeatherData);
   console.log(airDataForecast);
 
   // const airChart = [];

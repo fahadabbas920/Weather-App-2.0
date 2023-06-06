@@ -91,7 +91,7 @@ function App() {
   const [Live, setLive] = useState(false);
 
   // const [tZOffset, setTZOffset] = useState();
-  // // console.log(tZOffset);
+  console.log(error);
   // // console.log(forecastData);
   console.log(liveCoords);
   return (
@@ -137,13 +137,13 @@ function App() {
         {coords.lat === null ? null : <GetAirForecastPollution />}
         {/* {liveCoords.lat === null ? null : <GetReverseGeoCoding />} */}
         {/* {coords.lat === null ? null : <TimeZoneData />} */}
-        {error !== null ? <ErrorDiv/>:null}
         {/* <ErrorDiv/> */}
         {coords.lat === null ? (
           <Loading />
-        ) : (
-          <>
+          ) : (
+            <>
             <Navbar />
+            {error !== null && <ErrorDiv/>}
             <Header />
             <ChartControlButtons />
             <ForeCastCards />
