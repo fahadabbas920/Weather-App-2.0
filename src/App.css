@@ -125,11 +125,11 @@
 
 .App-Header-Img .App-Header-ImgBackBlur {
   z-index: 0;
-  opacity: 30%;
+  opacity: 50%;
   position: absolute;
   top: 0;
   /* right: 0; */
-  filter: blur(5px);
+  filter: blur(2px);
   /* scale: 5; */
   /* transform: translateX(2); */
   transform: scale(3) translateX(-5%);
@@ -339,6 +339,7 @@
     flex: 1 1 50%;
   } */
   .App-Header-Left {
+    margin-top: 1rem;
     flex-grow: 1;
     /* background-color: cade; */
     align-self: center;
@@ -354,7 +355,8 @@
   } */
 
   .App-Header-Temp {
-    font-size: 2.5rem;
+    margin-left: 2.5rem;
+    font-size: 3.5rem;
   }
   .App-Header-CF {
     font-size: 2rem;
