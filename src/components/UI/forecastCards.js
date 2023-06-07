@@ -6,7 +6,7 @@ const ForeCastCards = () => {
   let forecastArray = [weatherData];
   let temp = weatherData.dayName;
   forecastData.forEach((data) => {
-    if (temp !== data.dayName && data.hour === "3 PM") {
+    if (temp !== data.dayName && data.hour === "12 PM") {
       forecastArray.push(data);
       temp = data.dayName;
     }

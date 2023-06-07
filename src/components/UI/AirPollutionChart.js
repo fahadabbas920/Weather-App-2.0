@@ -1,42 +1,36 @@
 import {
   XAxis,
-  YAxis,
+  // YAxis,
   Tooltip,
-  Legend,
+  // Legend,
   // AreaChart,
   LineChart,
   ResponsiveContainer,
   // Area,
+  // Brush,
   Line,
 } from "recharts";
 import { useContext } from "react";
 import { AllWeatherData } from "../../App";
 
 const AirPollutionChart = () => {
-  const { airDataForecast, setAQI} = useContext(AllWeatherData);
+  const { airDataForecast, setAQI } = useContext(AllWeatherData);
   console.log(airDataForecast);
 
   // const airChart = [];
   let AQI = 0;
 
-
   const airChart = airDataForecast.filter((w, i) => {
-    return i<6
+    return i < 6;
     // return w.dayName === weatherData.dayName;
   });
-  airChart.forEach(data=>{
-    AQI += data.aqi 
-    data.XAxis = data.hour.replace(" ",'') + ' ' + data.dayName.slice(0,3)
-   })
-
-
-
-  
-  
-
-
-
-
+  airChart.forEach((data, index) => {
+    if (index < 6) {
+      AQI += data.aqi;
+    }
+    data.XAxis = data.hour;
+    // data.XAxis = data.hour.replace(" ", "") + " " + data.dayName.slice(0, 3);
+  });
 
   switch (Math.trunc(AQI / 6)) {
     case 1:
@@ -48,15 +42,15 @@ const AirPollutionChart = () => {
     case 3:
       setAQI("Moderate");
       break;
-      case 4:
+    case 4:
       setAQI("Poor");
       break;
-      case 5:
-        setAQI("Very Poor");
+    case 5:
+      setAQI("Very Poor");
       break;
 
-      default:
-        break;
+    default:
+      break;
   }
 
   const renderTooltipContent = (o) => {
@@ -85,9 +79,9 @@ const AirPollutionChart = () => {
           height={250}
           data={airChart}
           margin={{
-            top: 10,
-            right: 30,
-            left: 0,
+            top: 60,
+            right: 10,
+            left: 10,
             bottom: 0,
           }}
         >
@@ -97,32 +91,50 @@ const AirPollutionChart = () => {
             dataKey="nh3"
             stroke="#F4C430"
             strokeWidth={2}
-            />
-          <Line type="monotone" dataKey="no" stroke="#808000" strokeWidth={2} />
+            dot={false}
+            // label={{ fill: 'black', fontSize: 16, fontWeight: 'bold' }}
+          />
+          <Line
+            type="monotone"
+            dataKey="no"
+            stroke="#808000"
+            strokeWidth={2}
+            dot={false}
+          />
           <Line
             type="monotone"
             dataKey="no2"
             stroke="#cc3336"
             strokeWidth={2}
+            dot={false}
           />
-          <Line type="monotone" dataKey="o3" stroke="#82bfcf" strokeWidth={2} />
+          <Line
+            type="monotone"
+            dataKey="o3"
+            stroke="#82bfcf"
+            strokeWidth={2}
+            dot={false}
+          />
           <Line
             type="monotone"
             dataKey="pm2_3"
             stroke="#93C572"
             strokeWidth={2}
+            dot={false}
           />
           <Line
             type="monotone"
             dataKey="pm10"
             stroke="#008080"
             strokeWidth={2}
+            dot={false}
           />
           <Line
             type="monotone"
             dataKey="so2"
             stroke="#008000"
             strokeWidth={2}
+            dot={false}
           />
           {/* <Line
             type="monotone"
@@ -131,10 +143,18 @@ const AirPollutionChart = () => {
             strokeWidth={2}
             fill="#82ca9d"
           /> */}
-          <XAxis dataKey="XAxis" wrapperStyle={{fontSize: 10}}/>
-          <YAxis />
-         {airDataForecast !== [] &&  <Tooltip content={renderTooltipContent} />}
-          <Legend />
+          {/* <XAxis dataKey="XAxis" wrapperStyle={{ fontSize: 10 }} /> */}
+          <XAxis
+            dataKey={"XAxis"}
+            tickSize={0}
+            name="hour"
+            tick={{ fontSize: "12px", stroke: "black", fontWeight: '100' }}
+            axisLine={false}
+            dy={10}
+          />
+          {/* <YAxis /> */}
+          {airDataForecast !== [] && <Tooltip content={renderTooltipContent} />}
+          {/* <Legend /> */}
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -142,22 +162,22 @@ const AirPollutionChart = () => {
 };
 
 export default AirPollutionChart;
-            
-              // const newArray = airDataForecast.filter((w, i) => {
-              //   return w.dayName === "Thursday";
-              // });
-            
-              // console.log(newArray)
-            
-              // let temp = airDataForecast[0].dayName
-            
-            // const airChart = AirPollutionChart.Map(data=>{
-              
-            //   return (data.dayName === weatherData.dayNAme && data)
-            // })
-            // AQI += airDataForecast[i].aqi;
-              // for (let i = 1; i <= 6; i++) {
-               
-              //   newArray.push(airDataForecast[i]);
-              // }
-              // return w.dayName === weatherData.dayName;
+
+// const newArray = airDataForecast.filter((w, i) => {
+//   return w.dayName === "Thursday";
+// });
+
+// console.log(newArray)
+
+// let temp = airDataForecast[0].dayName
+
+// const airChart = AirPollutionChart.Map(data=>{
+
+//   return (data.dayName === weatherData.dayNAme && data)
+// })
+// AQI += airDataForecast[i].aqi;
+// for (let i = 1; i <= 6; i++) {
+
+//   newArray.push(airDataForecast[i]);
+// }
+// return w.dayName === weatherData.dayName;

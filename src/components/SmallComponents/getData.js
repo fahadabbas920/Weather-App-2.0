@@ -14,7 +14,7 @@ const GetWeatherData = () => {
     if (data !== null) {
       try {
         
-        // console.log(data)
+        console.log(data)
         const [dayName, date, month, year, hour, min, sec] = timeConverter(
           data.dt,
           data.timezone
@@ -50,6 +50,10 @@ const GetWeatherData = () => {
           speed: parseInt(data.wind.speed.toFixed(2)),
           speedC: parseInt(((data.wind.speed * 3600) / 1000).toFixed(2)),
           speedF: parseInt((data.wind.speed * 2.2369).toFixed(2)),
+          // rain1h: data.rain['1h'],
+          // rain3h: data.rain['3h'],
+          // snow1h: data.snow['1h'],
+          // snow3h: data.snow['3h'],
           dayName: dayName,
           date: date,
           month: month,

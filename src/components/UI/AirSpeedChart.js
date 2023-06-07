@@ -1,7 +1,7 @@
 import {
   XAxis,
-  YAxis,
-  Legend,
+  // YAxis,
+  // Legend,
   Tooltip,
   Area,
   AreaChart,
@@ -25,7 +25,8 @@ const AirSpeedChart = () => {
     // return w.dayName === weatherData.dayName;
   });
   windSpeed.forEach((data) => {
-    data.XAxis = data.hour.replace(" ", "") + " " + data.dayName.slice(0, 3);
+    data.XAxis = data.hour;
+    // data.XAxis = data.hour.replace(" ", "") + " " + data.dayName.slice(0, 3);
   });
 
   const renderTooltipContent = (o) => {
@@ -58,9 +59,9 @@ const AirSpeedChart = () => {
           height={250}
           data={windSpeed}
           margin={{
-            top: 10,
-            right: 30,
-            left: 0,
+            top: 60,
+            right: 10,
+            left: 10,
             bottom: 0,
           }}
         >
@@ -78,11 +79,12 @@ const AirSpeedChart = () => {
             // fill="#7eaed3"
             fillOpacity={1}
             fill="url(#colorWind)"
+            label={{ fill: 'black', fontSize: 16, fontWeight: 'bold' }}
           />
-          <XAxis dataKey={"XAxis"} />
-          <YAxis />
+          <XAxis dataKey={"XAxis"} tickSize={0} name="hour" tick={{fontSize: "12px",stroke: 'white'}} axisLine={false}/>
+          {/* <YAxis /> */}
           <Tooltip content={renderTooltipContent} />
-          <Legend />
+          {/* <Legend /> */}
         </AreaChart>
       </ResponsiveContainer>
     </div>

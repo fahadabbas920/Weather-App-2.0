@@ -9,7 +9,7 @@ const ErrorDiv = () => {
     },[error])
     return ( 
         <div className="App-Error-Container">
-            <h6 className="App-Error-Title">{error}..</h6>
+            {error && <h6 className="App-Error-Title">{error}</h6>}
         </div>
      );
 }

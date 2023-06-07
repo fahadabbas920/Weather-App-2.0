@@ -19,14 +19,17 @@ const ChartControlButtons = () => {
 
         <TabPanel>
           <h4>Temperature</h4>
+          {/* <small>Remaining temperature forecast hours for the day</small> */}
           <TemperatureChart />
         </TabPanel>
         <TabPanel>
           <h4>Wind</h4>
+          {/* <small>Remaining wind forecast hours for the day</small> */}
           <AirSpeedChart />
         </TabPanel>
         <TabPanel>
           <h4>Air Quality : {AQI}</h4>
+          {/* <small>Air quality is calculated for next 6 hours</small> */}
           <AirPollutionChart />
         </TabPanel>
       </Tabs>

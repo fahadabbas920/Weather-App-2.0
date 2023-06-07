@@ -1,7 +1,7 @@
 import {
   XAxis,
-  YAxis,
-  Legend,
+  // YAxis,
+  // Legend,
   Tooltip,
   Area,
   AreaChart,
@@ -14,7 +14,7 @@ import { AllWeatherData } from "../../App";
 const TemperatureChart = () => {
   const { forecastData, metric } = useContext(AllWeatherData);
   // console.log(weatherData)
-  console.log(forecastData);
+  // console.log(forecastData);
   // let filterer = [];
   // forecastData.forEach((data) => {
   //   filterer.push(
@@ -24,12 +24,24 @@ const TemperatureChart = () => {
   //   );
   // });
 
-  let toggleSystem;
+  let toggleTemp;
   if (metric === "km/h") {
-    toggleSystem = "tempC";
+    toggleTemp = "tempC";
   } else {
-    toggleSystem = "tempF";
+    toggleTemp = "tempF";
   }
+  // let toggleTempMin;
+  // if (metric === "km/h") {
+  //   toggleTempMin = "tempC_min";
+  // } else {
+  //   toggleTempMin = "tempF_min";
+  // }
+  // let toggleTempMax;
+  // if (metric === "km/h") {
+  //   toggleTempMax = "tempC_max";
+  // } else {
+  //   toggleTempMax = "tempF_min";
+  // }
 
   // const Temp = useRef()
   // useEffect(() => {
@@ -39,7 +51,8 @@ const TemperatureChart = () => {
   });
 
   Temp.forEach((data) => {
-    data.XAxis = data.hour.replace(" ", "") + " " + data.dayName.slice(0, 3);
+    data.XAxis = data.hour;
+    // data.XAxis = data.hour.replace(" ", "") + " " + data.dayName.slice(0, 3);
   });
 
   // console.log(Temp)
@@ -64,27 +77,28 @@ const TemperatureChart = () => {
     );
   };
   // const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
+  //   // console.log(payload)
   //   return (
   //     <text
   //       x={x + width / 2}
   //       y={y}
-  //       fill="#666"
+  //       fill="#000"
   //       textAnchor="middle"
   //       dy={-6}
   //     >{`value: ${value}`}</text>
   //   );
   // };
   return (
-    <div className="Air-Chart-Container">
+    <div className="Temperature-Chart-Container">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           width={600}
           height={250}
           data={Temp}
           margin={{
-            top: 10,
-            right: 30,
-            left: 0,
+            top: 60,
+            right: 10,
+            left: 10,
             bottom: 0,
           }}
         >
@@ -96,19 +110,43 @@ const TemperatureChart = () => {
           </defs>
           <Area
             type="monotone"
-            dataKey={toggleSystem}
+            dataKey={toggleTemp}
             stroke="#FFAA33"
             strokeWidth={2}
             // fill="#F4BB44"
             // label={renderCustomBarLabel}
             fillOpacity={1}
             fill="url(#colorTemp)"
+            label={{ fill: 'white', fontSize: 16, fontWeight: 'bold' }}
+            // label={renderCustomBarLabel}
           />
-          <XAxis dataKey={"XAxis"} />
-          <YAxis />
+          {/* <Area
+            type="monotone"
+            dataKey={toggleTempMin}
+            stroke="#FFAA33"
+            strokeWidth={2}
+            // fill="#F4BB44"
+            // label={renderCustomBarLabel}
+            fillOpacity={1}
+            fill="url(#colorTemp)"
+            label={{ fill: 'black', fontSize: 16, fontWeight: 'bold' }}
+          />
+          <Area
+            type="monotone"
+            dataKey={toggleTempMax}
+            stroke="#FFAA33"
+            strokeWidth={2}
+            // fill="#F4BB44"
+            // label={renderCustomBarLabel}
+            fillOpacity={1}
+            fill="url(#colorTemp)"
+            label={{ fill: 'black', fontSize: 16, fontWeight: 'bold' }}
+          /> */}
+          <XAxis dataKey={"XAxis"} tickSize={0} name="hour" tick={{fontSize: "12px",stroke: 'white'} } axisLine={false} label={{ offset: 0 }} />
+          {/* <YAxis /> */}
           <Tooltip content={renderTooltipContent} />
-          <Tooltip />
-          <Legend />
+          {/* <Tooltip /> */}
+          {/* <Legend /> */}
         </AreaChart>
       </ResponsiveContainer>
     </div>

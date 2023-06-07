@@ -120,6 +120,9 @@ const Header = () => {
             F
           </span>
         </div>
+      </div>
+
+      <div className="App-Header-760px-Wrapper">
         <div className="App-Header-Des">
           <div className="App-Header-Name">
             {weatherData.name}, {weatherData.country}
@@ -132,33 +135,35 @@ const Header = () => {
           </div>
           <div>Pressure: {weatherData.pressure} mbar</div>
         </div>
-      </div>
 
-      <div className="App-Header-Right">
-        <div className="App-Header-Title">Weather</div>
-        <div className="App-Header-DateTime">
-          {Hour < 10 ? `${"0" + Hour}` : Hour} :{" "}
-          {weatherData.min < 10 ? `${"0" + weatherData.min}` : weatherData.min}{" "}
-          {letr}
-        </div>
-        <div className="App-Header-Des2">{weatherData.description}</div>
-        <div
-          className="App-Header-Save"
-          onClick={() => {
-            handleSave();
-          }}
-        >
-          {star ? (
-            <span>
-              <i className="fa-solid fa-star"></i>
-              <small>Unsave</small>
-            </span>
-          ) : (
-            <span>
-              <i className="fa-regular fa-star"></i>
-              <small>Save</small>
-            </span>
-          )}
+        <div className="App-Header-Right">
+          <div className="App-Header-Title">Weather</div>
+          <div className="App-Header-DateTime">
+            {Hour < 10 ? `${"0" + Hour}` : Hour} :{" "}
+            {weatherData.min < 10
+              ? `${"0" + weatherData.min}`
+              : weatherData.min}{" "}
+            {letr}
+          </div>
+          <div className="App-Header-Des2">{weatherData.description}</div>
+          <div
+            className="App-Header-Save"
+            onClick={() => {
+              handleSave();
+            }}
+          >
+            {star ? (
+              <span>
+                <i className="fa-solid fa-star"></i>
+                {/* <small>Unsave</small> */}
+              </span>
+            ) : (
+              <span>
+                <i className="fa-regular fa-star"></i>
+                {/* <small>Save</small> */}
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </div>

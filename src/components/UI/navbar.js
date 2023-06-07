@@ -1,7 +1,8 @@
-import { useContext, useRef} from "react";
+import { useContext, useRef } from "react";
 import { AllWeatherData } from "../../App";
 import { getLocation } from "../SmallComponents/funcLibrary";
 import GetReverseGeoCoding from "../SmallComponents/getReversegeocoding";
+// import Autocomplete from "react-google-autocomplete";
 // import { useState } from "react";
 // import { useLocation } from "react-router-dom";
 // import useLocation from "../Hooks/useLocation";
@@ -14,7 +15,7 @@ const Navbar = () => {
     setLiveCoords,
     setStar,
     setLive,
-    Live
+    Live,
   } = useContext(AllWeatherData);
 
   function HandleSearch() {
@@ -36,8 +37,8 @@ const Navbar = () => {
   function HandleLivLoc() {
     // setstate(false);
     getLocation((coords, error, status) => {
-      console.log(status)
-      console.log(error)
+      console.log(status);
+      console.log(error);
       setError(error);
       if (coords.lat !== null) {
         setLiveCoords(coords);
@@ -63,7 +64,7 @@ const Navbar = () => {
       }
     }
     // Custom logic or actions you want to perform when the form is submitted
-    
+
     // Example: Resetting the form fields
     // event.target.reset();
   };
@@ -77,14 +78,14 @@ const Navbar = () => {
       </div>
       <div className="App-Navbar-Right">
         <form onSubmit={handleSubmit}>
-        <input
-          className=" App-Navbar-Input"
-          id="search-Bar"
-          type="text"
-          name="search"
-          placeholder="Search Location"
-          ref={inputNameRef}
-        />
+          <input
+            className=" App-Navbar-Input"
+            id="search-Bar"
+            type="text"
+            name="search"
+            placeholder="Search Location"
+            ref={inputNameRef}
+          />
         </form>
         <button
           className="App-Navbar-Btn App-Navbar-SearchBtn "
@@ -105,6 +106,13 @@ const Navbar = () => {
         </button>
       </div>
       {Live && <GetReverseGeoCoding />}
+      {/* <Autocomplete
+        apiKey={`AIzaSyBYMfuvqP8fRXxPoSZwyb9RLr-X3H1IbHE`}
+        onPlaceSelected={(place) => {
+          console.log(place);
+        }}
+      />
+      ; */}
     </nav>
   );
 };
