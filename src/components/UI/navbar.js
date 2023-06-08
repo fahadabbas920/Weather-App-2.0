@@ -2,10 +2,6 @@ import { useContext, useRef } from "react";
 import { AllWeatherData } from "../../App";
 import { getLocation } from "../SmallComponents/funcLibrary";
 import GetReverseGeoCoding from "../SmallComponents/getReversegeocoding";
-// import Autocomplete from "react-google-autocomplete";
-// import { useState } from "react";
-// import { useLocation } from "react-router-dom";
-// import useLocation from "../Hooks/useLocation";
 const Navbar = () => {
   const inputNameRef = useRef();
   const {
@@ -106,13 +102,6 @@ const Navbar = () => {
         </button>
       </div>
       {Live && <GetReverseGeoCoding />}
-      {/* <Autocomplete
-        apiKey={`AIzaSyBYMfuvqP8fRXxPoSZwyb9RLr-X3H1IbHE`}
-        onPlaceSelected={(place) => {
-          console.log(place);
-        }}
-      />
-      ; */}
     </nav>
   );
 };
