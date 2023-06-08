@@ -88,7 +88,7 @@
   background-color: #538a8f;
   /* background-color: rgb(195, 195, 195); */
   height: 100px;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   border-radius: 5px;
   color: white;
 }
@@ -264,6 +264,7 @@
 
 @media screen and (max-width: 960px) {
   .App-Header-Container {
+    padding: 0.5rem 0;
     width: 90vw;
     height: 70px;
   }
@@ -321,6 +322,7 @@
 
 @media screen and (max-width: 720px) {
   .App-Header-Container {
+    
     width: 90vw;
     height: 30vh;
     flex-direction: column;
@@ -402,16 +404,22 @@
 .Air-Chart-Container,
 .Pollution-Chart-Container,
 .Temperature-Chart-Container {
-
   height: 12rem;
   width: 720px;
   margin: 0 auto;
   text-align: center;
 }
+
+/* .Air-Chart-Container,
+.Pollution-Chart-Container,
+.Temperature-Chart-Container  > h4{
+color: white;
+} */
 @media screen and (max-width: 960px) {
   .Air-Chart-Container,
   .Pollution-Chart-Container,
   .Temperature-Chart-Container {
+    /* padding: 0.5rem; */
     height: 10rem;
     width: 90vw;
   }
@@ -439,7 +447,7 @@
 .App-Chart-ControlBtns-Container {
   /* display: none; */
   background-color: #538a8f;
-  /* color: white; */
+
   /* background-color: rgb(77, 77, 77); */
   /* display: flex;
   justify-content: center; */
@@ -454,6 +462,10 @@
   /* min-height: 500px; */
   /* margin-top: 3rem; */
   /* width: 900px */
+}
+
+.App-Chart-ControlBtns-Container h4{
+  color: white;
 }
 
 @media screen and (max-width: 960px) {
@@ -473,7 +485,7 @@
 
 @media screen and (max-width: 960px) {
   .App-Card-Array-Container {
-    justify-content: space-around;
+    /* justify-content: space-around; */
     flex-wrap: wrap;
     /* flex-wrap: wrap-reverse; */
     width: 90vw;

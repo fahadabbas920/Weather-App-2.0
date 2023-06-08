@@ -2,7 +2,7 @@ import {
   XAxis,
   // YAxis,
   Tooltip,
-  // Legend,
+  Legend,
   // AreaChart,
   LineChart,
   ResponsiveContainer,
@@ -148,13 +148,13 @@ const AirPollutionChart = () => {
             dataKey={"XAxis"}
             tickSize={0}
             name="hour"
-            tick={{ fontSize: "12px", stroke: "black", fontWeight: '100' }}
+            tick={{ fontSize: "12px", stroke: "white", fontWeight: '100' }}
             axisLine={false}
             dy={10}
           />
           {/* <YAxis /> */}
           {airDataForecast !== [] && <Tooltip content={renderTooltipContent} />}
-          {/* <Legend /> */}
+          <Legend />
         </LineChart>
       </ResponsiveContainer>
     </div>

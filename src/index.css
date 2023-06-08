@@ -13,6 +13,19 @@ body {
   /* background-color: #202124; */
   /* background-color: #BEBBB7; */
 }
+.react-tabs__tab-list{
+  border-bottom: 1 px solid black;
+}
+
+.react-tabs__tab{
+  background-color: #538a8f;
+  
+}
+.react-tabs__tab--selected{
+  background-color: rgb(242, 8, 8);
+
+}
+
 /* 
 body *{
   transition: height 0.3s ease;

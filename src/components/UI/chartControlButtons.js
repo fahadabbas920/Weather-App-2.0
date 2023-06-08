@@ -1,5 +1,6 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+// import "react-tabs/style/react-tabs.css";
+import "../UI/react-tabs.css";
 import AirSpeedChart from "./AirSpeedChart";
 import AirPollutionChart from "./AirPollutionChart";
 import TemperatureChart from "./TemperatureChart";
