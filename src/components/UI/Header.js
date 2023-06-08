@@ -154,12 +154,12 @@ const Header = () => {
           >
             {star ? (
               <span>
-                <i className="fa-solid fa-star"></i>
+                <i className="fa-solid fa-star" style={{color: "#FFD700"}}></i>
                 {/* <small>Unsave</small> */}
               </span>
             ) : (
               <span>
-                <i className="fa-regular fa-star"></i>
+                <i className="fa-regular fa-star" ></i>
                 {/* <small>Save</small> */}
               </span>
             )}

@@ -352,9 +352,11 @@
 
   .App-Header-Img .App-Header-ImgIcon {
   }
-
+ */
   .App-Header-Img .App-Header-ImgBackBlur {
-  } */
+    transform: scale(3) translateX(0%);
+    filter: blur(4px);
+  }
 
   .App-Header-Temp {
     margin-left: 2.5rem;

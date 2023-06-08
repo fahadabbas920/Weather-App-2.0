@@ -79,7 +79,7 @@ const AirSpeedChart = () => {
             // fill="#7eaed3"
             fillOpacity={1}
             fill="url(#colorWind)"
-            label={{ fill: 'black', fontSize: 16, fontWeight: 'bold' }}
+            label={{ fill: 'white', fontSize: 16, fontWeight: 'bold' }}
           />
           <XAxis dataKey={"XAxis"} tickSize={0} name="hour" tick={{fontSize: "12px",stroke: 'white'}} axisLine={false}/>
           {/* <YAxis /> */}
