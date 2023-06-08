@@ -324,7 +324,7 @@
   .App-Header-Container {
     
     width: 90vw;
-    height: 30vh;
+    height: 16rem;
     flex-direction: column;
     /* justify-content: center; */
   }
