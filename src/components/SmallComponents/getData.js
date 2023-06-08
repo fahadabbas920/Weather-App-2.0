@@ -13,8 +13,6 @@ const GetWeatherData = () => {
   useEffect(() => {
     if (data !== null) {
       try {
-        
-        console.log(data)
         const [dayName, date, month, year, hour, min, sec] = timeConverter(
           data.dt,
           data.timezone

@@ -11,8 +11,6 @@ const GetForecast = () => {
   useEffect(() => {
     if (data !== null) {
       try {
-        console.log(data);
-        // const tz = data.city.timezone;
         let dataArray = [];
         data.list.forEach((data) => {
           const { dayName, hour, minute, month, year, sec } =

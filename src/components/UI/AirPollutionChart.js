@@ -15,7 +15,6 @@ import { AllWeatherData } from "../../App";
 
 const AirPollutionChart = () => {
   const { airDataForecast, setAQI } = useContext(AllWeatherData);
-  console.log(airDataForecast);
 
   // const airChart = [];
   let AQI = 0;

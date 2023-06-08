@@ -12,7 +12,6 @@ const GetReverseGeoCoding = () => {
   useEffect(() => {
     if (data !== null) {
       try {
-        console.log(data[0].name);
         setLocationName(data[0].name);
         setLive(false);
         // setCoords(liveCoords)

@@ -26,8 +26,6 @@ const GetGeocoding = () => {
         }
         setError(null)
       } catch (error) {
-        // console.log(error)
-        // console.log()
         setError(`Message: Write Name Correctly, Error Fetching Data: ${error.message}`)
       }
 

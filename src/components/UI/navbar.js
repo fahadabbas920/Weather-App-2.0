@@ -33,8 +33,6 @@ const Navbar = () => {
   function HandleLivLoc() {
     // setstate(false);
     getLocation((coords, error, status) => {
-      console.log(status);
-      console.log(error);
       setError(error);
       if (coords.lat !== null) {
         setLiveCoords(coords);
@@ -47,12 +45,10 @@ const Navbar = () => {
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevents the default form submission behavior
     if (!inputNameRef.current.value) {
-      // setError("Please Enter Name")
-      console.log("Please Enter Name");
+      setError("Please Enter Name")
     } else if (inputNameRef.current.value === locationName) {
-      console.log("name already there");
+      setError("Name already there")
     } else {
-      // console.log(inputNameRef.current.value);
       setLocationName(inputNameRef.current.value);
       const name = localStorage.getItem("name");
       if (name === inputNameRef.current.value) {

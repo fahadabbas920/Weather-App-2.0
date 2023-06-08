@@ -28,15 +28,6 @@ function App() {
 
   useEffect(() => {
     setstate(true)
-  //   if (Coords !== null) {
-  //     setstate(true);
-  //     // setStar(true);
-  //   } 
-  // else if(liveCoords.lat !==null){
-  //     setstate(true);
-  //   }else{
-  //     true
-  //   }
   }, [Coords,liveCoords.lat]);
 
   const [coords, setCoords] = useState({ lat: null, lon: null });
@@ -90,10 +81,6 @@ function App() {
   const [AQI, setAQI] = useState("Unknown");
   const [Live, setLive] = useState(false);
 
-  // const [tZOffset, setTZOffset] = useState();
-  console.log(error);
-  // // console.log(forecastData);
-  console.log(liveCoords);
   return (
     <div className="App">
       <AllWeatherData.Provider
@@ -125,19 +112,13 @@ function App() {
           state,
           setstate,
           Live, setLive
-          // tZOffset,
-          // setTZOffset,
         }}
       >
-        {/* && locationName === "" */}
         {state ? <GetGeocoding /> : null}
         {coords.lat === null ? null : <GetWeatherData />}
         {coords.lat === null ? null : <GetAirPollution />}
         {coords.lat === null ? null : <GetForecast />}
         {coords.lat === null ? null : <GetAirForecastPollution />}
-        {/* {liveCoords.lat === null ? null : <GetReverseGeoCoding />} */}
-        {/* {coords.lat === null ? null : <TimeZoneData />} */}
-        {/* <ErrorDiv/> */}
         {coords.lat === null ? (
           <Loading />
           ) : (

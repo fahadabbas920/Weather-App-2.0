@@ -59,7 +59,6 @@ const Header = () => {
     if (error !== null) {
       setError(`Unable to Save`);
     } else {
-      console.log(error);
       const Coords = localStorage.getItem("Coords")
         ? JSON.parse(localStorage.getItem("Coords"))
         : null;

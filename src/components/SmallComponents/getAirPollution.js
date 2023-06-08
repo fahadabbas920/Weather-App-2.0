@@ -10,7 +10,6 @@ const GetAirPollution = () => {
 
   useEffect(() => {
     if (data !== null) {
-      // console.log(data.list[0].components);
       setAirData({
         co: data.list[0].components.co,
         nh3: data.list[0].components.nh3,

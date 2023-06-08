@@ -13,16 +13,6 @@ import { AllWeatherData } from "../../App";
 
 const TemperatureChart = () => {
   const { forecastData, metric } = useContext(AllWeatherData);
-  // console.log(weatherData)
-  // console.log(forecastData);
-  // let filterer = [];
-  // forecastData.forEach((data) => {
-  //   filterer.push(
-  //     Object.fromEntries(
-  //       Object.entries(data).filter(([key]) => key.includes("temp"))
-  //     )
-  //   );
-  // });
 
   let toggleTemp;
   if (metric === "km/h") {
@@ -30,23 +20,8 @@ const TemperatureChart = () => {
   } else {
     toggleTemp = "tempF";
   }
-  // let toggleTempMin;
-  // if (metric === "km/h") {
-  //   toggleTempMin = "tempC_min";
-  // } else {
-  //   toggleTempMin = "tempF_min";
-  // }
-  // let toggleTempMax;
-  // if (metric === "km/h") {
-  //   toggleTempMax = "tempC_max";
-  // } else {
-  //   toggleTempMax = "tempF_min";
-  // }
 
-  // const Temp = useRef()
-  // useEffect(() => {
   const Temp = forecastData.filter((w, i) => {
-    // return w.dayName === weatherData.dayName;
     return i < 6;
   });
 
@@ -54,9 +29,6 @@ const TemperatureChart = () => {
     data.XAxis = data.hour;
     // data.XAxis = data.hour.replace(" ", "") + " " + data.dayName.slice(0, 3);
   });
-
-  // console.log(Temp)
-  // }, [forecastData,weatherData.dayName,coords]);
 
   const renderTooltipContent = (o) => {
     const { payload } = o; //   ,label

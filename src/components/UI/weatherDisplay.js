@@ -10,11 +10,11 @@ import { AllWeatherData } from "../../App";
 const WeatherDisplay = () => {
   const [state, setstate] = useState("");
 
-  const { weatherData } = useContext(AllWeatherData);
+  const { weatherData,setError } = useContext(AllWeatherData);
 
   useEffect(() => {
     if (weatherData.icon === "NaN") {
-      console.log("Not");
+      // console.log("Not");
     } else {
       fetch(`http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`)
         .then((res) => {
@@ -25,10 +25,10 @@ const WeatherDisplay = () => {
           setstate(imageObjectURL);
         })
         .catch((value) => {
-          console.log(value);
+          setError(value)
         });
     }
-  }, [weatherData.icon]);
+  }, [weatherData.icon,setError]);
 
   // const [rad, setrad] = useState(1);
   // const [t, sett] = useState('');
