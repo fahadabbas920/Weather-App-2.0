@@ -11,6 +11,8 @@ import Loading from "./components/UI/loading";
 import ChartControlButtons from "./components/UI/chartControlButtons";
 import ForeCastCards from "./components/UI/forecastCards";
 import ErrorDiv from "./components/UI/errorDiv";
+import Footer from "./components/UI/footer";
+import StackButtons from "./components/UI/stackButtons";
 // import GetReverseGeoCoding from "./components/SmallComponents/getReversegeocoding";
 // import TimeZoneData from "./components/SmallComponents/getTimeZone";
 export const AllWeatherData = createContext();
@@ -126,8 +128,10 @@ function App() {
             <Navbar />
             {error !== null && <ErrorDiv/>}
             <Header />
+            <StackButtons/>
             <ChartControlButtons />
             <ForeCastCards />
+            <Footer/>
           </>
         )}
       </AllWeatherData.Provider>

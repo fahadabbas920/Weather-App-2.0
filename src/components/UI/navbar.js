@@ -64,8 +64,8 @@ const Navbar = () => {
   return (
     <nav className="App-Navbar-Container">
       <div className="App-Navbar-Left">
-        <label htmlFor="search" className="App-Navbar-Label">
-          Weather Station
+        <label htmlFor="search" className="App-Navbar-Label trimmed-text">
+          Tempestas
         </label>
       </div>
       <div className="App-Navbar-Right">

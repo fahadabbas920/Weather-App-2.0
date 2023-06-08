@@ -27,9 +27,12 @@
   color: white;
 }
 
-/* .App-Navbar-Left{}
-.App-Navbar-Label{
-}
+ .App-Navbar-Left{
+  font-weight: 500;
+ }
+/* .App-Navbar-Label{
+} */
+/*
 .App-Navbar-Right{} */
 .App-Navbar-Input {
   /* padding: 0.2rem; */
@@ -67,6 +70,22 @@
   .App-Navbar-Left {
     display: none;
   }
+  /*.App-Navbar-Input{
+
+  } */
+}
+
+@media screen and (max-width: 720px) {
+  .App-Navbar-Container {
+    height: 4rem;
+    width: 100%;
+  }
+  /* .App-Navbar-Left label{
+    visibility: hidden;
+  }
+  .trimmed-text::after {
+  content: "Tempestas";
+} */
   /*.App-Navbar-Input{
 
   } */
@@ -266,7 +285,7 @@
   .App-Header-Container {
     padding: 0.5rem 0;
     width: 90vw;
-    height: 70px;
+    /* height: 70px; */
   }
   /* .App-Header-Left {
   }
@@ -298,15 +317,15 @@
   /* .App-Header-Name {
   } */
 
-  .App-Header-Des {
+  /* .App-Header-Des {
     font-size: 0.8rem;
-  }
+  } */
   /* .App-Header-760px-Wrapper{
 
   }  */
   .App-Header-Right {
     align-self: center;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
   }
 
   /* .App-Header-Title {
@@ -316,7 +335,7 @@
   .App-Header-Des2 {
   } */
   .App-Header-Save {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -551,4 +570,125 @@ color: white;
   color: rgb(255, 0, 0);
   padding: 0.2rem;
   margin: 0;
+}
+
+
+
+/* Footer */
+
+.App-Footer-Container{
+  margin-top: 2rem;
+  color: white;
+  background-color: #538a8f;
+  width: 720px;
+  border-radius: 5px;
+  height: 100px;
+}
+
+.App-Footer-Container ul{
+  margin: 0 auto;
+  padding: 0;
+  /* background-color: #3e3e3e; */
+  height: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-Footer-Container ul li {
+  margin: 0.3rem 1rem;
+}
+
+@media screen and (max-width: 960px) {
+  .App-Footer-Container{
+    width: 90vw;
+    /* height: 70px; */
+  }
+  .App-Footer-Container ul{
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+.App-StackBtns-Container{
+  width: 720px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.App-Stack-Btn{
+  color: white;
+  margin-bottom: 1rem;
+  /* flex-basis: calc(33.33% - 10px); */
+  flex-basis: calc(33.33% - 20px);
+  border-radius: 5px;
+  height: 100px;
+  /* width: 100px; */
+  background-color: #538a8f;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;  
+  flex-direction: column;
+  margin-right: 20px; /* Adjust the margin as needed */
+  margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+.App-Stack-Btn:nth-child(3n) {
+  margin-right: 0;
+}
+.App-Stack-Btn:last-child {
+  margin-right: 0;
+}
+
+
+.App-Stack-Btn-Title{
+  font-weight: 500;
+  font-size: 1rem;
+  /* margin-bottom: 0.5rem; */
+}
+
+.App-Stack-Btn-Title, .App-Stack-Btn-Value{
+  margin: 1rem;
+}
+
+.App-Stack-Btn-Value{
+  margin-top: 0rem;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 960px) {
+  .App-StackBtns-Container{
+    width: 90vw;
+  }
+  
+  .App-Stack-Btn{
+    margin-right: 0; 
+    /* Adjust the margin as needed */
+    margin-bottom: 20px; 
+    /* Adjust the margin as needed */
+  }
+  .App-Stack-Btn-Title{
+    font-size: 1rem;
+  }
+  .App-Stack-Btn-Value{
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 720px) {
+  /* .App-StackBtns-Container {
+
+  } */
+  
+  .App-Stack-Btn{
+    flex-basis: calc(50% - 20px);
+  }
+  .App-Stack-Btn:last-child {
+    flex-basis: calc(100%)
+  }
 }

@@ -26,6 +26,8 @@ const GetWeatherData = () => {
           dt: data.dt,
           id: data.id,
           feels_like: data.main.feels_like,
+          feels_likeC: Math.floor(data.main.feels_like - 273.15),
+          feels_likeF: Math.floor(((data.main.feels_like - 273.15) * 9) / 5 + 32),
           humidity: data.main.humidity,
           pressure: data.main.pressure,
           temp: data.main.temp,
