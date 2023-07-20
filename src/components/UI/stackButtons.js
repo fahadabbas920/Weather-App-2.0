@@ -30,7 +30,7 @@ const StackButtons = () => {
     <div className="App-Stack-Btn-Title">
       Humidity <i className="fa-solid fa-droplet"></i>
     </div>
-    <div className="App-Stack-Btn-Value">{weatherData.humidity}</div>
+    <div className="App-Stack-Btn-Value">{weatherData.humidity}%</div>
   </div>
   <div className="App-Stack-Btn">
     <div className="App-Stack-Btn-Title">
